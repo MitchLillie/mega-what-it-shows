@@ -9,11 +9,11 @@
 		<link href="../../_app/immutable/chunks/B2Ul7l_u.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/BCPXOG7W.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/Dh1V97Jm.js" rel="modulepreload">
-		<link href="../../_app/immutable/entry/app.Bo2IZmGn.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.DMy395LN.js" rel="modulepreload">
 		<link href="../../_app/immutable/nodes/0.C9KfiiPz.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/DK3Fl9T5.js" rel="modulepreload">
-		<link href="../../_app/immutable/nodes/5.BbIHGqaP.js" rel="modulepreload">
-		<link href="../../_app/immutable/chunks/CPyjtWoD.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/5.Dt2mdJAT.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CPDTQxey.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/BTPwLomz.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/CVBzP17p.js" rel="modulepreload">
 		<link href="../../_app/immutable/chunks/BIy4WKJS.js" rel="modulepreload">
@@ -25,7 +25,7 @@
   <body>
     <div style="display: contents"><!--[--><!--[--><!--[0--><!--[--><!--[--><!--[-1--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 split · three date problems, not one</h1> <p class="meta svelte-e2jw2j"><span>owner <b>Mitch Lillie</b></span> <span class="status open svelte-e2jw2j">open</span> <span class="svelte-e2jw2j">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> is marked known: one issue, one fix queued. Its own table already
 shows two causes, and a desk note under it flags reports that moved by one day. Counted per
-report, the ticket holds three problems. The queued parser fix only covers the first.</p> <aside class="warn svelte-17bri61"><!---->Shipping the parser fix and closing #4471 leaves two problems open, with no ticket of their own until now.<!----></aside><!----> <h2>The split</h2> <p class="sum svelte-1op6c6"><strong>412</strong> reports in #4471 (427 export rows, 15 exported twice) · <strong>3</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>came in by</th><th>seen</th><th>ticket</th></tr></thead><tbody><!--[--><tr><td>shared parser reads day-first dates month first</td><td><strong>374</strong></td><td>11</td><td class="muted svelte-1op6c6">app ×202 · email ×147 · form ×25</td><td>2026-04-01 → 2026-10-04</td><td><!--[0--><a href="https://github.com/MitchLillie/mega-what-it-shows/issues/1">#1</a><!--]--></td></tr><tr><td>booking-v3 form hint says MM/DD/YYYY</td><td><strong>33</strong></td><td>3</td><td class="muted svelte-1op6c6">form ×33</td><td>2026-04-17 → 2026-09-22</td><td><!--[0--><a href="https://github.com/MitchLillie/mega-what-it-shows/issues/2">#2</a><!--]--></td></tr><tr><td>date moves by one day</td><td><strong>5</strong></td><td>5</td><td class="muted svelte-1op6c6">email ×3 · app ×2</td><td>2026-04-02 → 2026-10-04</td><td><!--[0--><a href="https://github.com/MitchLillie/mega-what-it-shows/issues/3">#3</a><!--]--></td></tr><!--]--></tbody></table><!----> <h2>How to tell them apart</h2> <p>Read the date in the report, then look up the tenant and how the report came in.</p> <ul><li><strong>Day and month swapped</strong> (7 April shows as 4 July). Came in by app, email or the booking-v2
+report, the ticket holds three problems. The queued parser fix only covers the first.</p> <aside class="warn svelte-17bri61"><!---->Shipping the parser fix and closing #4471 leaves two problems open, with no ticket of their own until now.<!----></aside><!----> <h2>The split</h2> <p class="sum svelte-1op6c6"><strong>412</strong> reports in #4471 (427 export rows, 15 exported twice) · <strong>3</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>came in by</th><th>seen</th><th>ticket</th></tr></thead><tbody><!--[--><tr><td>shared parser reads day-first dates month first</td><td><strong>379</strong></td><td>11</td><td class="muted svelte-1op6c6">app ×204 · email ×150 · form ×25</td><td>2026-04-01 → 2026-10-04</td><td><!--[0--><a href="https://github.com/MitchLillie/mega-what-it-shows/issues/1">#1</a><!--]--></td></tr><tr><td>booking-v3 form hint says MM/DD/YYYY</td><td><strong>33</strong></td><td>3</td><td class="muted svelte-1op6c6">form ×33</td><td>2026-04-17 → 2026-09-22</td><td><!--[0--><a href="https://github.com/MitchLillie/mega-what-it-shows/issues/2">#2</a><!--]--></td></tr><tr><td>date moves by one day</td><td><strong>5</strong></td><td>5</td><td class="muted svelte-1op6c6">email ×3 · app ×2</td><td>2026-04-02 → 2026-10-04</td><td><!--[0--><a href="https://github.com/MitchLillie/mega-what-it-shows/issues/3">#3</a><!--]--></td></tr><!--]--></tbody></table> <!--[--><!--[-1--><!--]--><!--[-1--><!--]--><!--[0--><p class="muted svelte-1op6c6">5 one-day moves are also counted under <code>parser</code>, where the desk filed them by tenant. The desk counts a report where it is filed and footnotes it (desk-notes.json).</p><!--]--><!--]--><!----> <h2>How to tell them apart</h2> <p>Read the date in the report, then look up the tenant and how the report came in.</p> <ul><li><strong>Day and month swapped</strong> (7 April shows as 4 July). Came in by app, email or the booking-v2
 form: the <strong>parser</strong> problem. The tenant writes the day first and the shared parser reads
 month first.</li> <li><strong>Day and month swapped</strong>, but it came in through the <strong>booking-v3 form</strong>: the <strong>hint</strong> problem. The form prints <code>MM/DD/YYYY</code>, people type what it says, and the form reads it day
 first. It looks exactly like the parser problem, so only the channel tells them apart.</li> <li><strong>One day off</strong> (Tuesday shows as Monday, or two people see different days): the <strong>shift</strong> problem. Swapping day and month can’t produce this. It points to time zones, which is an
@@ -39,16 +39,16 @@ One reporter says they stopped reporting it, so its count is a floor.</li> <li>W
 			
 			<script>
 				{
-					__sveltekit_1bva5od = {
+					__sveltekit_142ru71 = {
 						base: new URL("../..", location).pathname.slice(0, -1),
-						version: "1793214098741"
+						version: "1793214181830"
 					};
 
 					const element = document.currentScript.parentElement;
 
 					import("../../_app/immutable/entry/start.CH5w6lId.js").then(async (kit) => {
-						kit.init(__sveltekit_1bva5od);
-						const app = await import("../../_app/immutable/entry/app.Bo2IZmGn.js");
+						kit.init(__sveltekit_142ru71);
+						const app = await import("../../_app/immutable/entry/app.DMy395LN.js");
 						kit.start(app, element, {
 							node_ids: [0, 5],
 							data: [null,null],

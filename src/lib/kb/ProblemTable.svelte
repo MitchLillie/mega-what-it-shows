@@ -1,6 +1,6 @@
 <script lang="ts">
   import reports from '#lib/data/reports-4471.json';
-  import { exportedRows, splitTicket, type Problem } from '#lib/kb/problems';
+  import { exportedRows, splitTicket, uniqueReports, type Problem } from '#lib/kb/problems';
   import { tenantOf } from '#lib/kb/locales';
   import type { Report } from '#lib/kb/causes';
 
@@ -13,7 +13,7 @@
 
   const all = reports as Report[];
   const groups = $derived(splitTicket(all, ticket, tenantOf));
-  const total = $derived(groups.reduce((n, g) => n + g.reports.length, 0));
+  const total = $derived(uniqueReports(all, ticket));
   const rows = $derived(exportedRows(all, ticket));
   const channels = (c: Record<string, number>) =>
     Object.entries(c).sort((a, b) => b[1] - a[1]).map(([k, n]) => `${k} ×${n}`).join(' · ');
@@ -42,6 +42,12 @@
     {/each}
   </tbody>
 </table>
+
+{#each groups as g (g.problem)}
+  {#if g.filedUnder}
+    <p class="muted">{g.reports.length} one-day moves are also counted under <code>{g.filedUnder}</code>, where the desk filed them by tenant. The desk counts a report where it is filed and footnotes it (desk-notes.json).</p>
+  {/if}
+{/each}
 
 <style>
   .sum { font-size: 1.1rem; }
