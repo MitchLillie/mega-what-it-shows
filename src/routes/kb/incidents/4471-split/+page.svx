@@ -1,0 +1,73 @@
+---
+layout: runbook
+title: '#4471 split · three date problems, not one'
+owner: Mitch Lillie
+status: open
+reviewed: 2026-10-28
+signature: 'v1.eyJzdWIiOiI1MjQwIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyMTM2MDUsImV4cCI6MTc5MzMwMDAwNX0.jd89i6W8k7SGnOWksQStBOne1cHyyE8RaT2wBRj8KOA'
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const repo = 'https://github.com/MitchLillie/mega-what-it-shows/issues';
+  const tickets = {
+    parser: { n: 1, href: `${repo}/1` },
+    hint: { n: 2, href: `${repo}/2` },
+    shift: { n: 3, href: `${repo}/3` },
+  };
+  const labels = {
+    parser: 'shared parser reads day-first dates month first',
+    hint: 'booking-v3 form hint says MM/DD/YYYY',
+    shift: 'date moves by one day',
+  };
+</script>
+
+[#4471](/kb/incidents/4471) is marked known: one issue, one fix queued. Its own table already
+shows two causes, and a desk note under it flags reports that moved by one day. Counted per
+report, the ticket holds three problems. The queued parser fix only covers the first.
+
+<Callout kind="warn">
+Shipping the parser fix and closing #4471 leaves two problems open, with no ticket of their own until now.
+</Callout>
+
+## The split
+
+<ProblemTable ticket={4471} {tickets} {labels} />
+
+## How to tell them apart
+
+Read the date in the report, then look up the tenant and how the report came in.
+
+- **Day and month swapped** (7 April shows as 4 July). Came in by app, email or the booking-v2
+  form: the **parser** problem. The tenant writes the day first and the shared parser reads
+  month first.
+- **Day and month swapped**, but it came in through the **booking-v3 form**: the **hint**
+  problem. The form prints `MM/DD/YYYY`, people type what it says, and the form reads it day
+  first. It looks exactly like the parser problem, so only the channel tells them apart.
+- **One day off** (Tuesday shows as Monday, or two people see different days): the
+  **shift** problem. Swapping day and month can't produce this. It points to time zones, which is an
+  inference until someone reproduces it.
+
+## Why one ticket hid three
+
+- The subject doesn't separate them. #4471 took in "wrong day" reports under many different
+  subjects, and the same subject turns up in all three problems. Matching on subject
+  ([decision 0001](/kb/decisions/0001-dedupe-by-subject)) and "when unsure, merge"
+  ([triage](/kb/triage/dedupe)) both pull them together.
+- Intake tags each report from the reporter's browser, not the tenant. On #4471 the tags
+  disagree with the cause both ways, so neither the tag nor the subject can split the
+  ticket. The tenant directory and the channel can.
+- The export repeats reports where its pages overlap. Count by id: the table above does.
+
+## What to do
+
+- Keep the queued parser fix on [#1](https://github.com/MitchLillie/mega-what-it-shows/issues/1).
+- Fix the booking-v3 date hint: [#2](https://github.com/MitchLillie/mega-what-it-shows/issues/2).
+- Reproduce the one-day shift across time zones: [#3](https://github.com/MitchLillie/mega-what-it-shows/issues/3).
+  One reporter says they stopped reporting it, so its count is a floor.
+- When a big ticket's table shows more than one cause, split the ticket before marking it known.
+
+<RenderStamp {signature} />
